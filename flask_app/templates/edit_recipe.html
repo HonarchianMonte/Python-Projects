@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Recipe!</h1>
+    <a href="/recipes">back to recipes</a>
+    <a href="/users/logout">logout</a>
+
+    <div class="container">
+        <div class="left-side">
+            {% for message in get_flashed_messages(category_filter=['new_recipe']) %}
+                <p>{{message}}</p>
+            {% endfor %}
+            <form action='/recipe/update' method="post">
+                <input type="hidden" name="id" value = {{recipe.id}}> 
+                <!-- line above, this is done so that we for request form from our controller/method for UPDATE. -->
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" value="{{recipe.name}}">
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <input type="text" name = "description" value = {{recipe.description}}>
+                </div>
+                <div>
+                    <label for="instructions">Instructions:</label>
+                    <input type="text" name = "instructions" value = {{recipe.instructions}}>
+                </div>
+        </div>
+        <div class="right-side">
+                <div>
+                    <label for="cooked_date">Date Cooked/Made:</label>
+                    <input type="date" name="cooked_date" value="{{recipe.cooked_date}}">
+                </div>
+                <div>
+                    <label for="under_30_mins">Under 30 minutes?</label>
+                    <div>
+                        {% if recipe.under_30_mins == "yes" %}
+                        <p>
+                        <input type="radio" checked name="under_30_mins" value = "yes">Yes</input>
+                        </p>
+                        <p>
+                        <input type="radio" name="under_30_mins" value = "no">No</input>
+                        </p>
+                        {% endif %}
+                        {% if recipe.under_30_mins == "no" %}
+                        <p>
+                        <input type="radio"  name="under_30_mins" value = "yes">Yes</input>
+                        </p>
+                        <p>
+                        <input type="radio" checked name="under_30_mins" value = "no">No</input>
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+                <button>Submit</button>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

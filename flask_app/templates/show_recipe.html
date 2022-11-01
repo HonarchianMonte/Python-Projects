@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes Show</title>
+</head>
+<body>
+    <h1>Welcome, {{user.first_name}}</h1>
+    <a href="/recipes">back to recipes</a>
+    <a href="/users/logout">logout</a>
+    <h1>{{recipe.name}}</h1>
+    <p>Posted by {{recipe.posted_by.first_name}}</p>
+
+    <table style="width:100%">
+        <tr>
+            <th>Description:</th>
+            <td>{{recipe.description}}</td>
+        </tr>
+        <tr>
+            <th>Under 30 Minutes?:</th>
+            <td>{{recipe.under_30_mins}}</td>
+        </tr>
+        <tr>
+            <th>Instructions</th>
+            <td>{{recipe.instructions}}</td>
+        </tr>
+        <tr>
+            <th>Date Made:</th>
+            <td>{{recipe.cooked_date}}</td>
+        </tr>
+    </table>
+</body>
+</html>
